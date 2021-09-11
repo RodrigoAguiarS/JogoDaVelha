@@ -60,6 +60,7 @@ public class JogoDaVelha {
         desenha(2, 2);
     }
     public static void jogar (int jogador) {
+        int i = 0;
         if (jogador == 1) {
             jog = 1;
             System.out.println("\n\n Vez do Jogador " + jogador1);
@@ -68,7 +69,6 @@ public class JogoDaVelha {
             System.out.println("\n\n Vez do Jogador " + jogador2);
         }
         // inicializando contador da estrutura while
-        int i = 0;
         while (i == 0) {
             linha = 0; // inicializando valor da linha
             coluna = 0; // inicializando valor da coluna
@@ -155,10 +155,13 @@ public class JogoDaVelha {
         jogo();
         // verifica se houve vencedor
         System.out.println();
-        if (win == 1 || win == 2) {
+        if (win == 1){
             // informa o vencedor
-            System.out.println("Jogador " + win + " é o ganhador!");
-        } else {
+            System.out.println("Jogador " + jogador1 + " é o ganhador!");
+        } else if (win == 2){
+            // informa o vencedor
+            System.out.println("Jogador " + jogador2 + " é o ganhador!");
+        }else {
             // se não houve vencedor
             System.out.println("Não houve vencedor! O jogo foi empate!!");
         }
