@@ -156,7 +156,7 @@ public class JogoDaVelha {
             System.out.println("Jogador " + win + " é o ganhador!");
         } else {
             // se não houve vencedor
-            System.out.println("Não houve vencedor! O jogo foi empate!!");
+            System.out.println("Não  houve vencedor! O jogo foi empate!!");
         }
     }
 }
