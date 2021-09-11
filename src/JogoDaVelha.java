@@ -1,3 +1,9 @@
+import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class JogoDaVelha {
@@ -9,6 +15,7 @@ public class JogoDaVelha {
     private static long inicio;
     private static Jogador[] jogadores = new Jogador[50];
     private static int quantidadeJogadores = 0;
+    private static File arquivo = new File("ranking.obj");
 
     public static void desenha(int x, int y) {
         if (casa[x][y] == 1) {
@@ -139,7 +146,6 @@ public class JogoDaVelha {
         setTempo();
         int i;
         //percorre todo o tabuleiro, nas nove posições
-
         for (i = 0; i < 9; i++) {
             jogo();// chama a rotina jogo(), que desenha o tabuleiro
             if (i % 2 == 0) {
@@ -216,6 +222,27 @@ public class JogoDaVelha {
             System.out.println("Nome: " + jogadores[i].nome);
             System.out.println(" | vitórias:" + jogadores[i].vitorias);
             System.out.println(" | derrotas:" + jogadores[i].derrotas);
+        }
+    }
+    public static void salvarJogadores() {
+        try {
+            ObjectOutputStream saida = new ObjectOutputStream(new FileOutputStream(arquivo));
+            saida.writeObject(jogadores);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void lerJogadores() {
+        try {
+            ObjectInputStream saida = new ObjectInputStream(new FileInputStream(arquivo));
+            jogadores = (Jogador[]) saida.readObject();
+            while (jogadores[quantidadeJogadores] != null && quantidadeJogadores < 50) {
+                quantidadeJogadores = quantidadeJogadores + 1;
+            }
+        } catch (FileNotFoundException e) {
+            // Não faz nada
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
