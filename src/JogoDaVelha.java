@@ -139,7 +139,7 @@ public class JogoDaVelha {
             } else {
                 jogar(1);
             }
-            // chama a rotina check (), para ver se alguém ganhou
+            //chama a rotina check (), para ver se alguém ganhou
             check();
             if (win == 1 || win == 2) {
                 // sai do laço antes de completar o tabuleiro,
