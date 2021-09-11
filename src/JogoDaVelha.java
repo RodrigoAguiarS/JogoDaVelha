@@ -5,6 +5,7 @@ public class JogoDaVelha {
     private static int[][] casa = new int[3][3];
     private static int linha, coluna, win;
     private static Scanner leitor = new Scanner(System.in);
+    private static String jogador1, jogador2;
 
     public static void desenha(int x, int y) {
         if (casa[x][y] == 1) {
@@ -61,10 +62,11 @@ public class JogoDaVelha {
     public static void jogar (int jogador) {
         if (jogador == 1) {
             jog = 1;
+            System.out.println("\n\n Vez do Jogador " + jogador1);
         }else {
             jog = 2;
+            System.out.println("\n\n Vez do Jogador " + jogador2);
         }
-        System.out.println("\n\n Vez do Jogador " + jog);
         // inicializando contador da estrutura while
         int i = 0;
         while (i == 0) {
@@ -130,8 +132,10 @@ public class JogoDaVelha {
         }
     }
     public static void main(String[] args) {
+        cadastro();
         int i;
-        // percorre todo o tabuleiro, nas nove posições:
+        //percorre todo o tabuleiro, nas nove posições
+
         for (i = 0; i < 9; i++) {
             jogo();// chama a rotina jogo(), que desenha o tabuleiro
             if (i % 2 == 0) {
@@ -156,7 +160,15 @@ public class JogoDaVelha {
             System.out.println("Jogador " + win + " é o ganhador!");
         } else {
             // se não houve vencedor
-            System.out.println("Não  houve vencedor! O jogo foi empate!!");
+            System.out.println("Não houve vencedor! O jogo foi empate!!");
         }
+    }
+    public static void cadastro() {
+        System.out.println("Digite o nome do jogador 1:");
+        //recebe nome do jogador 1
+        jogador1 = leitor.next();
+        System.out.println("Digite o nome do jogador 2:");
+        //recebe nome do jogador 2
+        jogador2 = leitor.next();
     }
 }
